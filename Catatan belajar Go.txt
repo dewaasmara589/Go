@@ -1,0 +1,41 @@
+~ Roadmap GO
+https://roadmap.sh/golang
+--------------------------------------------------------------------------------------------------------
+~ SET UP Environment GO
+ https://medium.com/codex/how-to-set-up-a-go-development-environment-67b4b002182e
+
+~ Go language-specific guide
+ https://docs.docker.com/guides/golang/build-images/
+
+~ ERROR: failed to build: failed to solve: process "/bin/sh -c go mod download" did not complete successfully: exit code: 1 (Error Credential private repo ssh)
+ git config --global url."ssh://git@github.com/user-name/*".insteadOf https://github.com/user-name/*
+
+~ cmd / powershell harus ubah (\) ke (`)
+ docker run -d `
+  --name roach `
+  --hostname db `
+  --network mynet `
+  -p 26257:26257 `
+  -p 8080:8080 `
+  -v roach:/cockroach/cockroach-data `
+  cockroachdb/cockroach:v20.1.17 start-single-node `
+  --insecure
+
+~ Error response from daemon: failed to set up container networking: driver failed programming external connectivity on endpoint roach
+ docker run -d -p 8080:80 --name webserver nginx
+
+~ docker: Error response from daemon: Conflict. The container name "/roach" is already in use by container
+ see conflict = docker ps -a
+ docker rm roach
+
+--------------------------------------------------------------------------------------------------------
+~ A Tour GO (Introduce GO)
+https://go.dev/tour/basics/1
+
+--------------------------------------------------------------------------------------------------------
+~ Step Menjalankan GO
+https://go.dev/doc/tutorial/getting-started#install
+
+1. go mod init coba (nama folder)
+2. buat file .go
+3. go run . atau BelajarGo.go (nama file go)
