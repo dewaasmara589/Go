@@ -1,6 +1,9 @@
 package main
 
 import (
+	// coba dapat dari nama module di go.mod
+	"coba/calculation"
+	"coba/learning"
 	"fmt"
 )
 
@@ -38,31 +41,61 @@ func main() {
 	for loopSlices, n := range slices {
 		fmt.Printf("index : %d = %q\n", loopSlices, n)
 	}
-	fmt.Println(m)
+	fmt.Println(m, "\n")
 
 	// tidak dapat mengganti value pada variable := dengan sama-sama := harus dengan = saja
 	// i := 123
 	i = 123
-	fmt.Println("new value : ", i)
+	fmt.Println("new value : ", i, "\n")
 
 	// multiple deklar
+	fmt.Print("--- Multiple Declaration ---\n")
 	j, k, l := "tes", true, 3.14
 	fmt.Printf(j)
 	fmt.Println(k)
-	fmt.Println(l)
+	fmt.Println(l, "\n")
 
 	// Global Variable
+	fmt.Print("--- Global Variables ---\n")
 	printLocal()
-	fmt.Println(g)
+	fmt.Println(g, "\n")
 
 	// Varible constants
+	fmt.Print("--- Constants Variables ---\n")
 	hours := 24
 	minutes := int32(60)
 	fmt.Println(hours * year)
 	fmt.Println(minutes * year)
-	fmt.Println(minutes * leapYear)
+	fmt.Println(minutes*leapYear, "\n")
 
 	// Uint menghilangkan negatif number atau start dari 0
 	var maxUint32 uint32 = 4294967295
-	fmt.Println(maxUint32)
+	fmt.Print("--- maxUint32 ---\n")
+	fmt.Println(maxUint32, "\n")
+
+	// Use Model and learn to
+	fmt.Print("--- Functions ---\n")
+	subject := learning.Subject{Id: 1, Title: "Belajar Golang"}
+
+	// %s: Nilai string
+	// %d: Nilai desimal (integer)
+	// %f: Nilai floating point
+	// %t: Nilai boolean
+	// %c: Nilai karakte
+	// tidak dapat digunakan di Println
+	fmt.Printf("Id : %d, Title : %s \n", subject.Id, subject.Title)
+
+	// jika beda file namun sama/satu package tetap dapat dipanggil
+	// 1. Executable (main)
+	// 2. Library (selain main)
+	// sentence := TestAja()
+
+	// fmt.Println(sentence) // akan error jika hanya run BelajarGo.go jadi harus run BelajarGo.go KonsepPackage.go
+
+	// Functions
+	result := calculation.Add(1, 2)
+	fmt.Println("Add : ", result)
+
+	resultMultiple := calculation.Multiple(7, 5)
+	fmt.Println("Multiple : ", resultMultiple, "\n")
 }

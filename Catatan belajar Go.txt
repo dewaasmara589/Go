@@ -39,3 +39,6 @@ https://go.dev/doc/tutorial/getting-started#install
 1. go mod init coba (nama folder)
 2. buat file .go
 3. go run . atau BelajarGo.go (nama file go)
+
+1. go build (membuat file akan default nama file) atau go build -o nama file
+2. perintah execute ./nama file
