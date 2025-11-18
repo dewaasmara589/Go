@@ -21,7 +21,7 @@ const (
 )
 
 func main() {
-	// gunakan := jika varibale tidak didefinisikan (seperti var, const)
+	// gunakan := jika varibale ada nilainya dan tidak perlu didefinisikan (seperti var, const)
 	i := 1032049348
 
 	// var i int = 1032049348
@@ -98,4 +98,78 @@ func main() {
 
 	resultMultiple := calculation.Multiple(7, 5)
 	fmt.Println("Multiple : ", resultMultiple, "\n")
+
+	// IF dan Switch
+	fmt.Print("--- Condition ---\n")
+
+	score := 60
+	var grade string
+
+	if score <= 50 {
+		grade = "E"
+	} else if score <= 60 {
+		grade = "D"
+	} else if score < 70 {
+		grade = "C"
+	} else {
+		grade = "NULL"
+	}
+
+	fmt.Println("Grade : ", grade)
+
+	number := 5
+
+	switch number {
+	case 1:
+		fmt.Println("Satu")
+	case 2:
+		fmt.Println("Dua")
+	case 3:
+		fmt.Println("Tiga")
+	default:
+		fmt.Println("DEFAULT")
+	}
+
+	// Perulangan For
+	fmt.Print("\n--- Looping For ---\n")
+	for i := 0; i <= 5; i++ {
+		fmt.Println("Saya sedang belajar GO : ", i)
+	}
+
+	title := "Golang the best lengauage"
+
+	for index, letter := range title {
+		fmt.Printf("index : %d, letter : %s \n", index, string(letter))
+	}
+
+	// ganti dengan _ jika ada variable yang wajib tapi tidak digunakan
+	for _, letter := range title {
+		fmt.Printf("%s  ", string(letter))
+	}
+
+	fmt.Println("\n\n --- QUIZ ---")
+	// QUIZ hilangkan index ganjil
+	for index, letter := range title {
+		if index%2 == 0 {
+			fmt.Printf("%s ", string(letter))
+		}
+	}
+
+	// QUIZ cetak huruf vokal a, i, u, e, o
+	fmt.Printf("\n")
+	for _, letter := range title {
+		// cara 1
+		// if string(letter) == "a" || string(letter) == "i" || string(letter) == "u" || string(letter) == "e" || string(letter) == "o" {
+		// 	fmt.Printf("%s  ", string(letter))
+		// }
+
+		// cara 2
+		letterString := string(letter)
+
+		switch letterString {
+		case "a", "i", "u", "e", "o":
+			fmt.Printf("%s  ", string(letter))
+		}
+	}
+
 }
