@@ -149,6 +149,7 @@ func main() {
 
 	fmt.Println("\n\n --- QUIZ ---")
 	// QUIZ hilangkan index ganjil
+	fmt.Printf("1. ")
 	for index, letter := range title {
 		if index%2 == 0 {
 			fmt.Printf("%s ", string(letter))
@@ -156,7 +157,7 @@ func main() {
 	}
 
 	// QUIZ cetak huruf vokal a, i, u, e, o
-	fmt.Printf("\n")
+	fmt.Printf("\n2. ")
 	for _, letter := range title {
 		// cara 1
 		// if string(letter) == "a" || string(letter) == "i" || string(letter) == "u" || string(letter) == "e" || string(letter) == "o" {
@@ -172,4 +173,123 @@ func main() {
 		}
 	}
 
+	fmt.Println("\n\n --- Array ---")
+
+	// Cara 1
+	// var languages [5] string
+	// languages[0] = "Go"
+	// languages[1] = "Ruby"
+	// languages[2] = "Java"
+	// languages[3] = "Phyton"
+	// languages[4] = "C"
+
+	// Cara 2
+	// languages := [5]string{"Go", "Ruby", "Java", "Phyton", "C"}
+
+	// jika vertical harus tambah coma diakhir
+	// languages := [5]string{
+
+	// ... default lenght tanpa perlu di deklarasi jumlahnya
+	languages := [...]string{
+		"Go",
+		"Ruby",
+		"Java",
+		"Phyton",
+		"C",
+	}
+
+	fmt.Println(languages)
+	fmt.Println("length = ", len(languages))
+
+	for index, lang := range languages {
+		fmt.Printf("\nindex = %d, language = %s", index, lang)
+	}
+
+	fmt.Println("\n\n --- Slice ---")
+	// array yang tidak dideklar jumlah valuenya
+
+	// Cara 1 Biasa digunakan karena dinamis
+	var gameConsoles []string
+
+	gameConsoles = append(gameConsoles, "PS5")
+	gameConsoles = append(gameConsoles, "Xbox")
+	gameConsoles = append(gameConsoles, "Nitendo")
+
+	// Cara 2
+	// gameConsoles := []string{"PS4", "PS5"}
+
+	fmt.Println(gameConsoles)
+
+	for _, consol := range gameConsoles {
+		println(consol)
+	}
+
+	fmt.Println("\n\n --- MAP ---")
+
+	// Cara 1
+	// key = string
+	// value = int
+	var myMap map[string]int
+
+	// perlu insialisasi map
+	myMap = map[string]int{}
+
+	myMap["ruby"] = 9
+	myMap["go"] = 9
+	myMap["java"] = 8
+	myMap["go"] = 10
+
+	fmt.Println(myMap)
+	fmt.Println("value key 'ruby' = ", myMap["ruby"])
+
+	// Cara 2
+	myMap2 := map[string]string{"ruby": "is beatuful", "go": "is super fast", "javascript": "hype"}
+	fmt.Println(myMap2)
+
+	for key, value := range myMap2 {
+		fmt.Println("Key : ", key, ", value : ", value)
+	}
+
+	// delete value dengan key di Map
+	delete(myMap2, "ruby")
+	fmt.Println("Delete key ruby : ", myMap2)
+
+	value := myMap2["javascript"]
+	fmt.Println("value key javascript : ", value)
+
+	// cek value dengan isAvailable
+	value, isAvailable := myMap2["python"]
+	fmt.Println("check value python in myMap2 : ", isAvailable)
+
+	fmt.Println("\n\n --- Slice of MAP ---")
+	students := []map[string]string{
+		{"name": "test", "score": "A"},
+		{"name": "coba", "score": "B"},
+		{"name": "kocak", "score": "E"},
+	}
+
+	for _, student := range students {
+		fmt.Println(student["name"], " (", student["score"], ")")
+	}
+
+	fmt.Println("\n\n --- QUIZ ---")
+	// Quiz 1 (Hitung Rata-Rata)
+	scores := [8]int{100, 80, 75, 92, 70, 93, 88, 67}
+
+	// 	Quiz 2 (masukan ke goodScores jika >= 90)
+	var goodScores []int
+
+	var jumlahScored float64
+	for _, score := range scores {
+		jumlahScored += float64(score)
+
+		if score >= 90 {
+			goodScores = append(goodScores, score)
+		}
+	}
+
+	ratarata := jumlahScored / float64(len(scores))
+
+	fmt.Println("1. ", jumlahScored, "/", len(scores), " = ", ratarata)
+	fmt.Println("2. ", goodScores)
 }
