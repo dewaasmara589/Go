@@ -4,6 +4,7 @@ import (
 	// coba dapat dari nama module di go.mod
 	"coba/calculation"
 	"coba/learning"
+	"errors"
 	"fmt"
 )
 
@@ -292,4 +293,64 @@ func main() {
 
 	fmt.Println("1. ", jumlahScored, "/", len(scores), " = ", ratarata)
 	fmt.Println("2. ", goodScores)
+
+	fmt.Println("\n\n --- Multiple Function ---")
+
+	hasilSum, hasilDiff := calculate(10, 5)
+	fmt.Printf("Sum = %d, Diff = %d", hasilSum, hasilDiff)
+
+	_, onlyDiff := calculate(20, 8)
+	fmt.Printf("\nOnly Difference: %d\n", onlyDiff)
+
+	fmt.Println("\n\n --- QUIZ Function ---")
+
+	angka := []int{10, 5, 8, 9, 7}
+	total := sum(angka)
+
+	fmt.Println("1. Hasil SUM : ", total)
+
+	// result, err := quizcalculate(10, 2, "+")
+	// result, err := quizcalculate(10, 2, "-")
+	// result, err := quizcalculate(10, 2, "*")
+	// result, err := quizcalculate(10, 2, "/")
+	result, err := quizcalculate(10, 2, "=")
+
+	if err != nil {
+		fmt.Println("2. Error: ", err.Error())
+		fmt.Println("Terjadi Kesalahan")
+	} else {
+		fmt.Println("2. Hasil: ", result)
+	}
+}
+
+func calculate(a, b int) (int, int) {
+	sum := a + b
+	diff := a - b
+	return sum, diff
+}
+
+func sum(value []int) int {
+	var hasil int
+	for _, angka := range value {
+		hasil += angka
+	}
+	return hasil
+}
+
+func quizcalculate(angka1, angka2 int, karakter string) (int, error) {
+	var hasil int
+	var errorResult error
+	if karakter == "+" {
+		hasil = angka1 + angka2
+	} else if karakter == "-" {
+		hasil = angka1 - angka2
+	} else if karakter == "*" {
+		hasil = angka1 * angka2
+	} else if karakter == "/" {
+		hasil = angka1 / angka2
+	} else {
+		errorResult = errors.New("Unknown operation")
+	}
+
+	return hasil, errorResult
 }
