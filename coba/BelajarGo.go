@@ -321,6 +321,53 @@ func main() {
 	} else {
 		fmt.Println("2. Hasil: ", result)
 	}
+
+	fmt.Println("\n\n --- Struct ---")
+	// mirip seperti Model pada konsep MVC
+	user := User{}
+
+	// Cara 1
+	user.ID = 1
+	user.FirstName = "Dewa"
+	user.LastName = "Putra"
+	user.Email = "dewaputra@gmail.com"
+	user.isActive = true
+
+	// Cara 2 Bisa acak pengisian nilainya
+	user2 := User{
+		FirstName: "Test",
+		Email:     "test@gmail.com",
+		LastName:  "Test2",
+		isActive:  false,
+		ID:        2,
+	}
+
+	// Cara 3 harus urut pengisian nilainya
+	user3 := User{3, "coba", "coba2", "coba@gmail.com", true}
+
+	fmt.Println(user)
+	fmt.Println(user2)
+	fmt.Println(user3)
+
+	// Struct sebagai parameter
+	displayUser1 := displayUser(user)
+	fmt.Println(displayUser1)
+
+	// Embedded Struct
+	users := []User{user, user2}
+
+	group := Group{"Gamer", user, users, true}
+	displayGroup(group)
+
+	// Method
+	// func tidak melekat ke siapa", sedangkan untuk method melekat contohnya pada User
+	display := user.display()
+	fmt.Println(display)
+	fmt.Println(user2.display())
+
+	fmt.Println("\n\n --- QUIZ ---")
+	// Mengubah func displayGroup ke methoed
+	group.displayMethodGroup()
 }
 
 func calculate(a, b int) (int, int) {
@@ -353,4 +400,51 @@ func quizcalculate(angka1, angka2 int, karakter string) (int, error) {
 	}
 
 	return hasil, errorResult
+}
+
+type User struct {
+	ID        int
+	FirstName string
+	LastName  string
+	Email     string
+	isActive  bool
+}
+
+func displayGroup(group Group) {
+	fmt.Printf("Name : %s", group.Name)
+	fmt.Printf("\n")
+	fmt.Printf("Member Count : %d", len(group.Users))
+
+	fmt.Println("\nUsers Name : ")
+	for _, user := range group.Users {
+		fmt.Println(user.FirstName)
+	}
+}
+
+func displayUser(user User) string {
+	// Sprintf akan mengembalikan string jadi berbeda dangan Printf
+	return fmt.Sprintf("Name %s %s, Email : %s", user.FirstName, user.LastName, user.Email)
+}
+
+type Group struct {
+	Name        string
+	Admin       User
+	Users       []User
+	isAvailable bool
+}
+
+func (user User) display() string {
+	fmt.Println("Method")
+	return fmt.Sprintf("Name %s %s, Email : %s", user.FirstName, user.LastName, user.Email)
+}
+
+func (group Group) displayMethodGroup() {
+	fmt.Printf("Name : %s", group.Name)
+	fmt.Printf("\n")
+	fmt.Printf("Member Count : %d", len(group.Users))
+
+	fmt.Println("\nUsers Name : ")
+	for _, user := range group.Users {
+		fmt.Println(user.FirstName)
+	}
 }
