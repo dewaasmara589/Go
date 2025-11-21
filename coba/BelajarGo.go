@@ -368,6 +368,72 @@ func main() {
 	fmt.Println("\n\n --- QUIZ ---")
 	// Mengubah func displayGroup ke methoed
 	group.displayMethodGroup()
+
+	fmt.Println("\n\n --- Pointer ---")
+	// suatu alamat dari nilai variable, jadi yang disimpan alamat bukan nilai variablenya
+	// Rereferencing(&)
+
+	// Cara 1
+	numberA := 5
+	numberB := &numberA
+
+	fmt.Println("Variable numberA : ", numberA)
+	fmt.Println("Pointer/Alamat numberA : ", numberB)
+	fmt.Println("Dereferencing(*) Pointer numberA : ", *numberB)
+
+	// merubah numberB maka numberA akan berubah juga
+	*numberB = 10
+	fmt.Println("Change numberB : ", *numberB)
+	fmt.Println("Check numberA : ", numberA)
+
+	// Cara 2
+	var numberC int = 7
+	var numberD *int = &numberC
+	fmt.Println("Variable numberC : ", numberC)
+	fmt.Println("Pointer/Alamat numberD : ", numberD)
+
+	numberC = 20
+	fmt.Println("Change numberC : ", numberC)
+	fmt.Println("Check Deferencing numberD : ", *numberD)
+
+	// Contoh Kasus
+	numberZ := 9
+	fmt.Println("\nAlamat Memori : ", &numberZ)
+	fmt.Println("Nilai Awal : ", numberZ)
+
+	fmt.Println("\n-------------------------------------------")
+	change1(numberZ, 100)
+
+	fmt.Println("Alamat Memori Akhir : ", &numberZ)
+	fmt.Println("Nilai Akhir : ", numberZ)
+
+	// Menyamakan nilai baru dan akhir dengan menyimpan alamat
+	fmt.Println("\n-------------------------------------------")
+	change2(&numberZ, 100)
+	fmt.Println("Alamat Memori Akhir 2 : ", &numberZ)
+	fmt.Println("Nilai Akhir 2 : ", numberZ)
+
+	fmt.Println("\n\n --- Pointer + Struct ---")
+	student := Student{1, "Dewa Asmara Putra", 3.82}
+	fmt.Println("Nama awal : ", student.Name)
+
+	// Cara 1 Function
+	// graduation(&student)
+
+	// Cara 2 Function
+	student.graduation2()
+
+	fmt.Println("Nama graduation : ", student.Name)
+
+	fmt.Println("\n\n --- QUIZ ---")
+	gamer := Gamer{Name: "Warnet"}
+
+	gamer.AddGame("Point Blank")
+	gamer.AddGame("Lost Saga")
+
+	for _, game := range gamer.Games {
+		fmt.Println(game)
+	}
 }
 
 func calculate(a, b int) (int, int) {
@@ -447,4 +513,41 @@ func (group Group) displayMethodGroup() {
 	for _, user := range group.Users {
 		fmt.Println(user.FirstName)
 	}
+}
+
+func change1(old int, new int) {
+	old = new
+
+	fmt.Println("Alamat Memori change1 : ", &old)
+	fmt.Println("Nilai Awal change1 : ", old)
+}
+
+func change2(old *int, new int) {
+	*old = new
+
+	fmt.Println("Alamat Memori change2 : ", &old)
+	fmt.Println("Nilai Awal change2 : ", *old)
+}
+
+type Student struct {
+	ID   int
+	Name string
+	IPK  float32
+}
+
+func graduation(student *Student) {
+	student.Name = student.Name + " S.Kom"
+}
+
+func (student *Student) graduation2() {
+	student.Name = student.Name + " S.Kom"
+}
+
+type Gamer struct {
+	Name  string
+	Games []string
+}
+
+func (gamer *Gamer) AddGame(game string) {
+	gamer.Games = append(gamer.Games, game)
 }
