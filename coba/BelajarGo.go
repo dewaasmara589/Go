@@ -225,6 +225,10 @@ func main() {
 		println(consol)
 	}
 
+	// index 1 sampai sebelum index 3 (1<3)
+	var gameConsolesSlice = gameConsoles[1:3]
+	fmt.Println("slice [1:3] : ", gameConsolesSlice)
+
 	fmt.Println("\n\n --- MAP ---")
 
 	// Cara 1
@@ -444,7 +448,7 @@ func main() {
 	luas = SeberapaLuas(persegiPanjang)
 	fmt.Println("Luas Persegi Panjang : ", luas)
 
-	asal := Asal{Angka: 1000,}
+	asal := Asal{Angka: 1000}
 	luas = SeberapaLuas(asal)
 	fmt.Println("Luas Asal : ", luas)
 }
