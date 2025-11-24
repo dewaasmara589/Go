@@ -434,6 +434,19 @@ func main() {
 	for _, game := range gamer.Games {
 		fmt.Println(game)
 	}
+
+	fmt.Println("\n\n --- Pointer ---")
+	persegi := Persegi{Sisi: 4}
+	luas := SeberapaLuas(persegi)
+	fmt.Println("Luas Persegi : ", luas)
+
+	persegiPanjang := PersegiPanjang{Panjang: 4, Lebar: 5}
+	luas = SeberapaLuas(persegiPanjang)
+	fmt.Println("Luas Persegi Panjang : ", luas)
+
+	asal := Asal{Angka: 1000,}
+	luas = SeberapaLuas(asal)
+	fmt.Println("Luas Asal : ", luas)
 }
 
 func calculate(a, b int) (int, int) {
@@ -550,4 +563,37 @@ type Gamer struct {
 
 func (gamer *Gamer) AddGame(game string) {
 	gamer.Games = append(gamer.Games, game)
+}
+
+type BangunDatar interface {
+	HitungLuas() int
+}
+
+type Persegi struct {
+	Sisi int
+}
+
+func (persegi Persegi) HitungLuas() int {
+	return persegi.Sisi * persegi.Sisi
+}
+
+type PersegiPanjang struct {
+	Panjang int
+	Lebar   int
+}
+
+func (persegiPanjang PersegiPanjang) HitungLuas() int {
+	return persegiPanjang.Panjang * persegiPanjang.Lebar
+}
+
+type Asal struct {
+	Angka int
+}
+
+func (asal Asal) HitungLuas() int {
+	return 404
+}
+
+func SeberapaLuas(bangunDatar BangunDatar) any {
+	return bangunDatar.HitungLuas()
 }
