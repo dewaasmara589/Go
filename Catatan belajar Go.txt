@@ -42,3 +42,7 @@ https://go.dev/doc/tutorial/getting-started#install
 
 1. go build (membuat file akan default nama file) atau go build -o nama file
 2. perintah execute ./nama file
+-------------------------------------------------------------------------------------------------------
+step cepat open folder dari cmd ke vscode
+1. di input address ganti menjadi cmd lalu akan membuka cmd
+2. code - untuk membuka vscode

@@ -69,7 +69,7 @@ func main() {
 	fmt.Println(minutes * year)
 	fmt.Println(minutes*leapYear, "\n")
 
-	// Uint menghilangkan negatif number atau start dari 0
+	// Uint menghilangkan negatif number atau start dari 0 (bilangan bulat)
 	var maxUint32 uint32 = 4294967295
 	fmt.Print("--- maxUint32 ---\n")
 	fmt.Println(maxUint32, "\n")
