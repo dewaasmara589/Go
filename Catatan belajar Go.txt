@@ -46,3 +46,16 @@ https://go.dev/doc/tutorial/getting-started#install
 step cepat open folder dari cmd ke vscode
 1. di input address ganti menjadi cmd lalu akan membuka cmd
 2. code - untuk membuka vscode
+-------------------------------------------------------------------------------------------------------
+Jenis-jenis package Go
+* Standard library
+  - fmt
+  - os
+  - errors
+  - database/sql
+* 3rd party package
+  - github.com/gofiber/fiber/v3
+  - gorm.io/gorm
+* Custom package
+  - <nama module>/controller
+  - github.com/Dryluigi/simple-rest-api/controller
