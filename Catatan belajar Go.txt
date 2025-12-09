@@ -59,3 +59,22 @@ Jenis-jenis package Go
 * Custom package
   - <nama module>/controller
   - github.com/Dryluigi/simple-rest-api/controller
+-------------------------------------------------------------------------------------------------------
+~ CATATATN REST API~
+
+Action Menggunakan HTTP method
+- GET = mengambil data
+- POST = membuat data baru
+- PUT = update data
+- PATCH = update data secara parsial
+- DELETE = hapus data
+
+Link download Fiber Framework (https://gofiber.io/)
+go get github.com/gofiber/fiber/v2
+
+Link check Fiber Framework sudah berhasil setup
+http://localhost:3000/
+
+Install package untuk database setup (https://pkg.go.dev/github.com/go-pg/pg/v10)
+go get github.com/go-pg/pg/v10
+
