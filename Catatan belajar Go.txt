@@ -78,3 +78,5 @@ http://localhost:3000/
 Install package untuk database setup (https://pkg.go.dev/github.com/go-pg/pg/v10)
 go get github.com/go-pg/pg/v10
 
+Go Validator (https://github.com/go-playground/validator)
+go get github.com/go-playground/validator/v10
