@@ -2,6 +2,10 @@ package dto
 
 // data transfer object (dto)
 
+type ListBookRequest struct {
+	Search string `query:"search"`
+}
+
 type ListBookResponse struct {
 	Id          int    `json:"id"`
 	Title       string `json:"title"`
