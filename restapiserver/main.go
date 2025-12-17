@@ -62,6 +62,9 @@ func main() {
 	// run db
 	database.InitDb()
 
+	// Get All or Multiple Data
+	app.Get("api/books", controller.ListBookController)
+
 	// passing data jadi tidak perlu () untuk CreateBookController
 	app.Post("api/books", controller.CreateBookController)
 
